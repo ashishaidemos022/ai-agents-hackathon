@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Hackathon Applicant Ranking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <form id="login" class="card login">
+      <h2>Organizer login</h2>
+      <p class="muted">Enter the admin passcode to review and rank applicants.</p>
+      <div id="login-error" class="alert error" role="alert"></div>
+      <div class="field" style="margin-bottom:16px"><label for="passcode">Passcode</label><input id="passcode" type="password" autocomplete="current-password" required /></div>
+      <button class="btn" type="submit">Sign in</button>
+    </form>
+
+    <div id="app" hidden>
+      <div class="admin-bar">
+        <h2 style="margin:0">Applicant ranking</h2>
+        <div class="group">
+          <input id="search" type="text" placeholder="Search name, school, email…" style="width:220px" />
+          <select id="filter" style="width:150px">
+            <option value="">All statuses</option>
+            <option value="pending">Pending</option>
+            <option value="invited">Invited</option>
+            <option value="waitlisted">Waitlisted</option>
+            <option value="declined">Declined</option>
+          </select>
+          <button class="btn ghost small" id="refresh">Refresh</button>
+          <button class="btn ghost small" id="export">Export CSV</button>
+          <button class="btn ghost small" id="logout">Sign out</button>
+        </div>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="card" style="margin-bottom:16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+        <div style="flex:1; min-width:260px">
+          <b>Apply the cutoff</b>
+          <div class="muted" style="font-size:13px">Invites the top <i>N</i> by final score (excluding declined) and waitlists everyone else. The dashed line in the table marks the current cutoff.</div>
+        </div>
+        <label for="capacity" style="font-weight:600">Seats</label>
+        <input id="capacity" type="number" min="1" max="1000" style="width:90px" />
+        <button class="btn small" id="apply-cutoff">Invite top N</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th><th>Final</th><th>Auto</th><th>Adj</th><th>Name</th><th>School</th>
+              <th>Grad</th><th>LLM exp.</th><th>Py / JS</th><th>Skills</th><th>Status</th><th>Applied</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p class="muted" style="font-size:13px; margin: 12px 0 40px">
+        Click a row to read the full application and adjust its score (±20), status and notes.
+        Auto score (0–100) weighs LLM experience, Python/JS level, skills, GitHub/portfolio, hackathons, depth of written answers, degree, graduation timing and work authorization. See README for the full rubric.
+      </p>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

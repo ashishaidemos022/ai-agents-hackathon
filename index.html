@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Agents Hackathon</title>
+  <meta name="description" content="Recruiting hackathon for Applied AI Engineers: build a production-grade AI agent in one day." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <span class="badge">Recruiting event · We're hiring Applied AI Engineers</span>
+      <h1>Build Agents <span>That Ship</span></h1>
+      <p class="lede">
+        <strong>This hackathon is the interview.</strong> Instead of a whiteboard, you'll spend a day building a
+        production-grade AI agent on the Talkdesk AI Agent Platform alongside our team. Real tools, real evals,
+        a real CI/CD deploy. The strongest builders will be invited to interview.
+      </p>
+      <div class="meta">
+        <div><b>Date</b><span data-cfg="eventDate"></span></div>
+        <div><b>Time</b>9:00 AM – 6:00 PM</div>
+        <div><b>Location</b><span data-cfg="eventLocation"></span></div>
+        <div><b>Apply by</b><span data-cfg="registrationDeadline"></span></div>
+        <div><b>Seats</b><span data-cfg="capacity"></span> students</div>
+      </div>
+      <a class="btn" href="#register">Apply for a seat →</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="info">
+      <div class="wrap">
+        <h2>What you'll build</h2>
+        <div class="grid-3">
+          <div class="card"><span class="icon">🤖</span><h3>A working agent</h3><p>Tool calls, guardrails and escalation to a human for a real customer-experience problem.</p></div>
+          <div class="card"><span class="icon">🧪</span><h3>An eval dataset</h3><p>Simulated and scripted scenarios that prove it works, including where it fails.</p></div>
+          <div class="card"><span class="icon">🚀</span><h3>A deployable artifact</h3><p>From YAML to PR to a live environment with our agents-as-code toolkit.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info">
+      <div class="wrap">
+        <h2>How the day runs</h2>
+        <div class="timeline">
+          <div><b>9:00</b>Kickoff, tracks &amp; teams</div>
+          <div><b>9:45</b>Platform &amp; toolkit crash course</div>
+          <div><b>10:30</b>Build session 1</div>
+          <div><b>12:30</b>Lunch &amp; mentor office hours</div>
+          <div><b>1:15</b>Build session 2 + eval checkpoint</div>
+          <div><b>4:30</b>Code freeze</div>
+          <div><b>4:45</b>Demos (5 min per team)</div>
+          <div><b>5:45</b>Judging, awards &amp; wrap-up</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info">
+      <div class="wrap grid-3">
+        <div class="card"><h3>Who should apply</h3><ul><li>Students and recent grads who build with LLMs, APIs and tool calling</li><li>People who care about reliability more than prompt tricks</li><li>Curious builders who like to break things and measure quality</li></ul></div>
+        <div class="card"><h3>What you get</h3><ul><li><strong>A path to an Applied AI Engineer interview</strong></li><li>Mentoring from the people who build the platform</li><li>Prizes, food and coffee all day</li></ul></div>
+        <div class="card"><h3>How selection works</h3><p>Seats are limited. If we receive more applications than seats, we'll review every application and invite the strongest fit. Everyone hears back by email after the deadline.</p></div>
+      </div>
+    </section>
+
+    <section id="register">
+      <div class="wrap">
+        <h2>Apply for a seat</h2>
+        <div id="success" class="card success" hidden>
+          <div class="big">🎉</div>
+          <h2>Application received</h2>
+          <p class="muted">Thanks, <span id="success-name"></span>. We'll email you after the application deadline to let you know whether you have a seat.</p>
+        </div>
+
+        <form id="reg-form" class="card" novalidate>
+          <div id="form-error" class="alert error" role="alert"></div>
+
+          <fieldset>
+            <legend>About you</legend>
+            <div class="row">
+              <div class="field"><label class="req" for="full_name">Full name</label><input id="full_name" name="full_name" type="text" required maxlength="120" autocomplete="name" /></div>
+              <div class="field"><label class="req" for="email">Email</label><input id="email" name="email" type="email" required maxlength="200" autocomplete="email" /></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" maxlength="40" autocomplete="tel" /></div>
+              <div class="field"><label for="location">City, country</label><input id="location" name="location" type="text" maxlength="120" /></div>
+            </div>
+            <label class="check"><input type="checkbox" name="work_authorized" id="work_authorized" /> I am authorized to work in the country where this role is based.</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Education</legend>
+            <div class="row">
+              <div class="field"><label class="req" for="university">University or school</label><input id="university" name="university" type="text" required maxlength="160" /></div>
+              <div class="field"><label for="major">Major / field of study</label><input id="major" name="major" type="text" maxlength="120" /></div>
+            </div>
+            <div class="row">
+              <div class="field"><label class="req" for="degree_level">Degree</label>
+                <select id="degree_level" name="degree_level" required>
+                  <option value="">Select…</option>
+                  <option value="bachelors">Bachelor's</option>
+                  <option value="masters">Master's</option>
+                  <option value="phd">PhD</option>
+                  <option value="bootcamp">Bootcamp</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="field"><label class="req" for="graduation_year">Graduation year</label><select id="graduation_year" name="graduation_year" required></select></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Skills</legend>
+            <div class="field" style="margin-bottom:16px">
+              <label class="req">Experience building with LLMs</label>
+              <div class="radios">
+                <label class="radio"><input type="radio" name="llm_experience" value="none" required /><span><b>Not yet</b>Curious, still learning</span></label>
+                <label class="radio"><input type="radio" name="llm_experience" value="used_apis" /><span><b>Used APIs</b>Prompts, chat apps</span></label>
+                <label class="radio"><input type="radio" name="llm_experience" value="built_agents" /><span><b>Built agents</b>Tool calling, RAG, workflows</span></label>
+                <label class="radio"><input type="radio" name="llm_experience" value="shipped_production" /><span><b>Shipped to users</b>Real users, real traffic</span></label>
+              </div>
+            </div>
+            <div class="row three">
+              <div class="field"><label for="python_level">Python</label><select id="python_level" name="python_level" class="level"></select></div>
+              <div class="field"><label for="javascript_level">JavaScript / TypeScript</label><select id="javascript_level" name="javascript_level" class="level"></select></div>
+              <div class="field"><label for="hackathons_count">Hackathons attended</label><input id="hackathons_count" name="hackathons_count" type="number" min="0" max="100" value="0" /></div>
+            </div>
+            <div class="field">
+              <label>What have you worked with? <span class="hint">Pick all that apply</span></label>
+              <div class="chips" id="skills"></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Links</legend>
+            <div class="row three">
+              <div class="field"><label for="github_url">GitHub</label><input id="github_url" name="github_url" type="url" placeholder="https://github.com/you" maxlength="300" /></div>
+              <div class="field"><label for="linkedin_url">LinkedIn</label><input id="linkedin_url" name="linkedin_url" type="url" placeholder="https://linkedin.com/in/you" maxlength="300" /></div>
+              <div class="field"><label for="portfolio_url">Portfolio / project demo</label><input id="portfolio_url" name="portfolio_url" type="url" placeholder="https://" maxlength="300" /></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Tell us more</legend>
+            <div class="field" style="margin-bottom:16px">
+              <label class="req" for="project_description">Describe the best thing you've built with AI or code <span class="hint">What it did, your role, what was hard</span></label>
+              <textarea id="project_description" name="project_description" required minlength="20" maxlength="3000"></textarea>
+              <div class="counter" data-for="project_description"></div>
+            </div>
+            <div class="field" style="margin-bottom:16px">
+              <label class="req" for="why_join">Why do you want to join, and what interests you about Applied AI Engineering?</label>
+              <textarea id="why_join" name="why_join" required minlength="20" maxlength="2000"></textarea>
+              <div class="counter" data-for="why_join"></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="team_status">Team</label>
+                <select id="team_status" name="team_status">
+                  <option value="need_team">I'd like to be matched with a team</option>
+                  <option value="have_team">I'm applying with a team</option>
+                </select>
+              </div>
+              <div class="field"><label for="dietary_needs">Dietary needs or accessibility requests</label><input id="dietary_needs" name="dietary_needs" type="text" maxlength="300" /></div>
+            </div>
+          </fieldset>
+
+          <label class="check" style="margin-bottom:20px"><input type="checkbox" id="consent" name="consent" required /> <span class="req">I agree that my application details may be stored and reviewed for this event and for recruiting purposes.</span></label>
+
+          <button class="btn" type="submit" id="submit-btn">Submit application</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">AI Agents Hackathon · Questions? Contact the event organizers.</div></footer>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
